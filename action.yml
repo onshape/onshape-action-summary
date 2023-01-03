@@ -6,7 +6,7 @@ runs:
     - name: get-summary
       shell: bash
       run: |
-        pwd
+        chmod +x ./action-summary.bash
         ./action-summary.bash
       env:
         INPUT_STRING: "Hello there"
