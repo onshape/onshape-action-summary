@@ -1,15 +1,17 @@
 name: 'onshape-action-summary'
 
-jobs:
-  summary:
-    runs-on: ubuntu 20.04
-    steps:
-      - uses: actions/checkout@v3
-      - name: run get-summary
-        run: |
-          chmod +x ./action-summary.bash
-          ./action-summary.bash
-        shell: bash
-        env:
-          INPUT_STRING: "Hello there"
-          GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+    - name: get-summary
+      run: |
+        pwd
+        ls
+        ls ..
+        chmod +x ./action-summary.bash
+        ./action-summary.bash
+      shell: bash
+      env:
+        INPUT_STRING: "Hello there"
+        GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY
