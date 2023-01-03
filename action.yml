@@ -4,6 +4,7 @@ runs:
   using: "composite"
   steps:
     - name: get-summary
+      shell: bash
       run: |
         bash ${GITHUB_WORKSPACE}/action-summary.bash
       env:
