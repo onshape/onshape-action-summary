@@ -3,11 +3,11 @@ description: 'Test summary wf'
 inputs:
 outputs:
 
-runs:
-  using: "composite"
-  steps:
-    - name: test-summary
-      uses: onshape/onshape-action-summary@onshape-action-summary
-      shell: bash
-      run: |
-        echo "Running..."
+jobs:
+  run-test:
+    steps:
+      - name: test-summary
+      - uses: onshape/onshape-action-summary@main
+        shell: bash
+        run: |
+          echo "Running..."
