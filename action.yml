@@ -6,11 +6,7 @@ runs:
     - uses: actions/checkout@v3
     - name: get-summary
       run: |
-        pwd
-        ls
-        ls ..
-        chmod +x ./action-summary.bash
-        ./action-summary.bash
+        ls /home/runner/work
       shell: bash
       env:
         INPUT_STRING: "Hello there"
