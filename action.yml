@@ -8,6 +8,9 @@ runs:
       run: |
         echo "## \`${GITHUB_WORKFLOW}\` Passed!" >> $GITHUB_STEP_SUMMARY
         echo "On branch \`${GITHUB_REF_NAME}\` (${GITHUB_SHA})" >> $GITHUB_STEP_SUMMARY
+        echo '```'
+        git log --cherry-pick --first-parent --reverse HEAD~1..HEAD
+        echo '```'
       shell: bash
       env:
         GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY
