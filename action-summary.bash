@@ -4,6 +4,8 @@ set -o errexit
 set -o pipefail
 set -o xtrace
 
+set +x
+
 # ${to} can be a space separated list of email addreses
 #btPython3 buildSrc/tools/python/send-build-change-report ${to}
 
@@ -25,6 +27,7 @@ set -o xtrace
 '
 
 # Summary
+echo $GITHUB_STEP_SUMMARY
 {
     echo "OUTPUT: "
     echo ${INPUT_STRING}
