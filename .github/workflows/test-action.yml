@@ -1,7 +1,5 @@
 name: 'test-action-summary'
 description: 'Test summary wf'
-inputs:
-outputs:
 
 jobs:
   run-test:
