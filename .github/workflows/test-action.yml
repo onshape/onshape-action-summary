@@ -1,5 +1,4 @@
 name: 'test-action-summary'
-description: 'Test summary wf'
 
 on:
   workflow_dispatch:
