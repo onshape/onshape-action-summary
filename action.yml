@@ -6,8 +6,8 @@ runs:
     - uses: actions/checkout@v3
     - name: get-summary
       run: |
-        echo "## Passed! \`${GITHUB_REF_NAME}\`" >> $GITHUB_STEP_SUMMARY
-        echo "(${GITHUB_SHA})" >> $GITHUB_STEP_SUMMARY
+        echo "## ${GITHUB_WORKFLOW} Passed!" >> $GITHUB_STEP_SUMMARY
+        echo "On ${GITHUB_REF_NAME} (${GITHUB_SHA})" >> $GITHUB_STEP_SUMMARY
       shell: bash
       env:
         GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY
