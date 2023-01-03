@@ -3,9 +3,10 @@ description: 'Test summary wf'
 
 jobs:
   run-test:
+    runs-on: ubuntu-20.04
     steps:
-      - name: test-summary
-      - uses: onshape/onshape-action-summary@main
-        shell: bash
-        run: |
-          echo "Running..."
+    - name: test-summary
+      uses: onshape/onshape-action-summary@main
+      run: |
+        echo "Running..."
+      shell: bash
