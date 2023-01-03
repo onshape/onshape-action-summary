@@ -4,12 +4,6 @@ set -o errexit
 set -o pipefail
 set -o xtrace
 
-if shouldNotifyCommitters; then
-    to='osbuilds@crusoetec.com'
-else
-    to='onshape-buildmaster@ptc.com'
-fi
-
 # ${to} can be a space separated list of email addreses
 btPython3 buildSrc/tools/python/send-build-change-report ${to}
 
