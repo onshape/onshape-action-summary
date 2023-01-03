@@ -5,7 +5,7 @@ set -o pipefail
 set -o xtrace
 
 # ${to} can be a space separated list of email addreses
-btPython3 buildSrc/tools/python/send-build-change-report ${to}
+#btPython3 buildSrc/tools/python/send-build-change-report ${to}
 
 # Summary
 {
