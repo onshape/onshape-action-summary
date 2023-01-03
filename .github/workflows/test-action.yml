@@ -5,8 +5,9 @@ jobs:
   run-test:
     runs-on: ubuntu-20.04
     steps:
-    - name: test-summary
-      uses: onshape/onshape-action-summary@main
+    - name: run-test
       run: |
         echo "Running..."
       shell: bash
+    - name: summary
+      uses: onshape/onshape-action-summary@main
