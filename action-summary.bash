@@ -8,6 +8,7 @@ set -o xtrace
 #btPython3 buildSrc/tools/python/send-build-change-report ${to}
 
 # Summary
+'
 {
     lastSHA=${LAST_SUCCESSFUL_COMMIT:0:$SHORT_SHA_LENGTH}
     shortSHA=$(gitShortSHA)
@@ -20,4 +21,9 @@ set -o xtrace
     git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
     echo '```'
 
+} >> $GITHUB_STEP_SUMMARY
+'
+
+{
+    echo "Output :)"
 } >> $GITHUB_STEP_SUMMARY
