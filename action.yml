@@ -6,7 +6,7 @@ runs:
     - name: get-summary
       shell: bash
       run: |
-        bash ${GITHUB_WORKSPACE}/action-summary.bash
+        bash onshape/onshape-action-summary/action-summary.bash
       env:
         INPUT_STRING: "Hello there"
         GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY
