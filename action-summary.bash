@@ -1,29 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash -ex
 
-set -o errexit
-set -o pipefail
-set -o xtrace
+name=$(node -p "require('./package.json').name")
+version=$(node -p "require('./package.json').version")
 
-# ${to} can be a space separated list of email addreses
-#btPython3 buildSrc/tools/python/send-build-change-report ${to}
-
-# Summary
-'
+sha=$(git rev-parse HEAD)
+shortSHA=${sha:0:12}
 {
-    lastSHA=${LAST_SUCCESSFUL_COMMIT:0:$SHORT_SHA_LENGTH}
-    shortSHA=$(gitShortSHA)
-    range="${lastSHA}...${shortSHA}"
-
-    echo "Building \`${GITHUB_REF_NAME}\` [newton@${shortSHA}](https://github.com/${GITHUB_REPOSITORY}/commit/$(gitSHA)) as ${NEWTON_VERSION}.${GITHUB_RUN_NUMBER}.${shortSHA}"
-    echo
-    echo "Change set [${range}](https://github.com/${GITHUB_REPOSITORY}/compare/${range})"
-    echo '```'
-    git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
-    echo '```'
-
-} >> $GITHUB_STEP_SUMMARY
-'
-
-{
-    echo "Output :)"
+    echo "Published \`${GITHUB_REF_NAME}\` [onshape-ng-modules@${shortSHA}](https://github.com/${GITHUB_REPOSITORY}/commit/${sha}) as NPM version ${version}"
 } >> $GITHUB_STEP_SUMMARY
