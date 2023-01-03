@@ -2,10 +2,10 @@ name: 'onshape-action-summary'
 
 jobs:
   make-summary:
-  runs-on: ubuntu-20.04
-  steps:
-    - name: get-summary
-      run: |
-        bash ${GITHUB_WORKSPACE}/action-summary.bash
-      env:
-        INPUT_STRING: "Hello there"
+    runs-on: ubuntu-20.04
+    steps:
+      - name: get-summary
+        run: |
+          bash ${GITHUB_WORKSPACE}/action-summary.bash
+        env:
+          INPUT_STRING: "Hello there"
