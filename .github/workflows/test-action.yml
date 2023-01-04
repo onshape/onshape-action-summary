@@ -33,6 +33,3 @@ jobs:
         env:
           dofail: ${{ inputs.dofail }}
       - uses: onshape/onshape-action-summary@erousseau-build-actions
-        if: always()
-        env:
-          TEST_OUTCOME: ${{ steps.run-test.outcome }}

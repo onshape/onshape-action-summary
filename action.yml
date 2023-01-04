@@ -10,4 +10,3 @@ runs:
       shell: bash
       env:
         GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY
-        TEST_OUTCOME: $TEST_OUTCOME
