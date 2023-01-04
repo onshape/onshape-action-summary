@@ -5,7 +5,7 @@ name: 'test-action-summary'
 on:
   workflow_dispatch:
     inputs:
-      do-fail:
+      dofail:
         description: Simuate failed "build"
         type: boolean
         default: false
@@ -19,8 +19,8 @@ jobs:
         run: |
           set +x
           echo "Running..."
-          echo "Do fail: ${do-fail}"
-          if [ $do-fail ]
+          echo "Do fail: ${dofail}"
+          if [ $dofail ]
           then
             echo "Failing!"
             exit 1
@@ -30,5 +30,5 @@ jobs:
           fi
           exit 0
         env:
-          do-fail: inputs.do-fail
+          dofail: inputs.dofail
       - uses: onshape/onshape-action-summary@erousseau-build-actions
