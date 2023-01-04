@@ -8,7 +8,6 @@ shortSHA=${sha:0:12}
 {
     #echo "Published \`${GITHUB_REF_NAME}\` [onshape-ng-modules@${shortSHA}](https://github.com/${GITHUB_REPOSITORY}/commit/${sha}) as NPM version ${version}"
     echo "## \`${GITHUB_WORKFLOW}\` Finished"
-    else
     echo "Using branch \`${GITHUB_REF_NAME}\`"
     echo '```'
     git show HEAD --name-only
