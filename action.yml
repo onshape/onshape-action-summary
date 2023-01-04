@@ -10,3 +10,4 @@ runs:
       shell: bash
       env:
         GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY
+        TEST_OUTCOME: ${{ steps.run-test.outcome }}
