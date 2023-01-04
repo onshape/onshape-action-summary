@@ -10,5 +10,5 @@
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
 echo '```'
-git show HEAD --name-only
+git show --summary
 echo '```'
