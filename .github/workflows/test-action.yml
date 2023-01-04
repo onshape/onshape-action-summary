@@ -18,7 +18,7 @@ jobs:
       - name: run-test
         run: |
           echo "Running..."
-          if $do-fail
+          if [ $do-fail ]
           then
             echo "Failing!"
             exit 1
