@@ -9,5 +9,5 @@
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
 echo '```'
-git show --summary
+git log --cherry-pick --first-parent --reverse HEAD~1..HEAD
 echo '```'
