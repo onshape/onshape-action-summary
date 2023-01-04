@@ -6,9 +6,12 @@ runs:
     - uses: actions/checkout@v3
     - name: get-summary
       run: |
-        echo "Passed? $?" >> $GITHUB_STEP_SUMMARY
-        echo "## \`${GITHUB_WORKFLOW}\` Passed!" >> $GITHUB_STEP_SUMMARY
-        echo "On branch \`${GITHUB_REF_NAME}\` (${GITHUB_SHA})" >> $GITHUB_STEP_SUMMARY
+        if ${{ failure() }}
+        then
+          echo "## \`${GITHUB_WORKFLOW}\` Passed!" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "## \`${GITHUB_WORKFLOW}\` Failed!" >> $GITHUB_STEP_SUMMARY
+        echo "Using branch \`${GITHUB_REF_NAME}\`" >> $GITHUB_STEP_SUMMARY
         echo '```' >> $GITHUB_STEP_SUMMARY
         git show HEAD --name-only >> $GITHUB_STEP_SUMMARY
         echo '```' >> $GITHUB_STEP_SUMMARY
