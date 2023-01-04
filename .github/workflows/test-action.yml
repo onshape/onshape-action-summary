@@ -1,13 +1,14 @@
 name: 'test-action-summary'
 
-inputs:
-  do-fail:
-    description: Simuate failed "build"
-    type: boolean
-    default: false
+
 
 on:
   workflow_dispatch:
+    inputs:
+      do-fail:
+        description: Simuate failed "build"
+        type: boolean
+        default: false
 
 jobs:
   run-test:
