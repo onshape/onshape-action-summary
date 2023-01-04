@@ -6,6 +6,7 @@ runs:
     - uses: actions/checkout@v3
     - name: get-summary
       run: |
+        set +x
         bash ${{ github.action_path }}/action-summary.bash
         echo "end of first script"
         if [ $? -eq 0 ]
