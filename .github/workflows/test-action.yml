@@ -34,3 +34,7 @@ jobs:
           dofail: ${{ inputs.dofail }}
       - uses: onshape/onshape-action-summary@erousseau-build-actions
         if: always()
+      - name: echo-outcome
+        if: always()
+        run: |
+          echo ${{ steps.run-test.outcome }}
