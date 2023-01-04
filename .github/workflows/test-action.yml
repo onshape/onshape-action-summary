@@ -19,6 +19,7 @@ jobs:
         run: |
           set +x
           echo "Running..."
+          echo "Do fail: $do-fail"
           if [ $do-fail ]
           then
             echo "Failing!"
