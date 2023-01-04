@@ -20,7 +20,7 @@ jobs:
           set +x
           echo "Running..."
           echo "Do fail: ${dofail}"
-          if [ $dofail ]
+          if $dofail
           then
             echo "Failing!"
             exit 1
