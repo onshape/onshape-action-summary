@@ -7,7 +7,7 @@ runs:
     - name: get-summary
       run: |
         set +x
-        bash ${{ github.action_path }}/action-summary.bash
+        bash ${{ github.action_path }}/action-summary.bash >> $GITHUB_STEP_SUMMARY
       shell: bash
       env:
         GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY
