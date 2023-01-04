@@ -13,10 +13,12 @@ runs:
           echo "## \`${GITHUB_WORKFLOW}\` Passed!" >> $GITHUB_STEP_SUMMARY
         else
           echo "## \`${GITHUB_WORKFLOW}\` Failed!" >> $GITHUB_STEP_SUMMARY
+        fi
         echo "Using branch \`${GITHUB_REF_NAME}\`" >> $GITHUB_STEP_SUMMARY
         echo '```' >> $GITHUB_STEP_SUMMARY
         git show HEAD --name-only >> $GITHUB_STEP_SUMMARY
         echo '```' >> $GITHUB_STEP_SUMMARY
+
       shell: bash
       env:
         GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY

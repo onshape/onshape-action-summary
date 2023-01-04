@@ -25,6 +25,7 @@ jobs:
           else
             echo "Passing!"
             exit 0
+          fi
         env:
           do-fail: inputs.do-fail
       - uses: onshape/onshape-action-summary@erousseau-build-actions
