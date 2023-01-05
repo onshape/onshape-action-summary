@@ -8,8 +8,7 @@ then
     name=$(node -p "require('./package.json').name")
     version=$(node -p "require('./package.json').version")
 
-    echo "Npm Name: $name"
-    echo "Npm Name: $version"
+    echo "NPM: \`${name} - ${version}\' "
 fi
 
 if [ $TEXT ]
@@ -18,6 +17,7 @@ then
 fi
 
 echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
+
 echo '```'
 if $CHANGESET && [ $LAST_SUCCESSFUL_COMMIT ]
 then
