@@ -3,6 +3,7 @@
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
 
+echo "DO-NPM: ${DO-NPM}"
 if $DO-NPM
 then
     name=$(node -p "require('./package.json').name")
@@ -14,7 +15,7 @@ fi
 
 if [ $TEXT ]
 then
-     echo $TEXT
+     echo "${TEXT}"
 fi
 
 echo '```'
