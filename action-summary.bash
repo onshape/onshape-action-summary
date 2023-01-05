@@ -3,8 +3,8 @@
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
 
-echo "DO-NPM: ${DO-NPM}"
-if $DO-NPM
+echo "NPM: ${NPM}"
+if $NPM
 then
     name=$(node -p "require('./package.json').name")
     version=$(node -p "require('./package.json').version")
@@ -18,6 +18,7 @@ then
      echo "${TEXT}"
 fi
 
+echo "Changeset: ${NPM}"
 echo '```'
 if $CHANGESET
 then
