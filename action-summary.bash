@@ -1,13 +1,27 @@
 #!/bin/bash -ex
 
-#name=$(node -p "require('./package.json').name")
-#version=$(node -p "require('./package.json').version")
-
-#sha=$(git rev-parse HEAD)
-#shortSHA=${sha:0:12}
-#echo "Published \`${GITHUB_REF_NAME}\` [onshape-ng-modules@${shortSHA}](https://github.com/${GITHUB_REPOSITORY}/commit/${sha}) as NPM version ${version}"
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
+
+if $DO-NPM
+then
+    name=$(node -p "require('./package.json').name")
+    version=$(node -p "require('./package.json').version")
+
+    echo "Npm Name: $name"
+    echo "Npm Name: $version"
+fi
+
+if [ $TEXT ]
+then
+     echo $TEXT
+fi
+
 echo '```'
-git log -1
+if $CHANGESET
+then
+    git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
+else
+    git log -1
+fi
 echo '```'
