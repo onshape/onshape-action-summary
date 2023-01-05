@@ -11,6 +11,6 @@ runs:
       shell: bash
       env:
         GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY
-        NPM: $NPM
-        CHANGESET: $CHANGESET
-        TEXT: $TEXT
+        #NPM: $NPM
+        #CHANGESET: $CHANGESET
+        #TEXT: $TEXT
