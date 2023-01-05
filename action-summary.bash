@@ -3,7 +3,6 @@
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
 
-echo "NPM: ${NPM}"
 if $NPM
 then
     name=$(node -p "require('./package.json').name")
@@ -18,9 +17,9 @@ then
      echo "${TEXT}"
 fi
 
-echo "Changeset: ${NPM}"
+echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
 echo '```'
-if $CHANGESET
+if $CHANGESET && [ $LAST_SUCCESSFUL_COMMIT ]
 then
     git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
 else
