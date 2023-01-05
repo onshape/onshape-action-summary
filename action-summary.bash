@@ -3,17 +3,19 @@
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
 
+pwd
+
 if $NPM
 then
     name=$(node -p "require('./package.json').name")
     version=$(node -p "require('./package.json').version")
 
-    echo "NPM: \`${name} - ${version}\' "
+    echo "NPM: \`${name} - ${version}\`"
 fi
 
 if [ $TEXT ]
 then
-     echo "${TEXT}"
+     echo "Text: ${TEXT}"
 fi
 
 echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
