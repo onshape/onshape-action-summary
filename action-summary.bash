@@ -18,7 +18,7 @@ fi
 
 if [[ "${TEXT}" ]]
 then
-     echo "Text: ${TEXT}"
+     echo $(eval "echo $TEXT")
 fi
 
 echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
