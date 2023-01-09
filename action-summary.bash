@@ -1,9 +1,10 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
 
-pwd
+echo "pwd: $(pwd)"
+echo "ls: $(ls)"
 
 if $NPM
 then
