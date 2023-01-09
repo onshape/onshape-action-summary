@@ -29,8 +29,10 @@ then
     echo '```'
     if [[ $LAST_SUCCESSFUL_COMMIT ]]
     then
+        echo "Big changelog"
         git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
     else
+    echo "Single changelog"
         git log n -1
     fi
     echo '```'
