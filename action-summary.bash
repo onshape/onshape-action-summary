@@ -23,11 +23,15 @@ fi
 
 echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
 
-echo '```'
-if $CHANGESET && [[ $LAST_SUCCESSFUL_COMMIT ]]
+
+if $CHANGESET
 then
-    git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
-else
-    git log -1
+    echo '```'
+    if [[ $LAST_SUCCESSFUL_COMMIT ]]
+    then
+        git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
+    else
+        git log n -1
+    fi
+    echo '```'
 fi
-echo '```'
