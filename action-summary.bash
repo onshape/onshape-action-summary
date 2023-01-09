@@ -3,18 +3,20 @@
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
 
-echo "pwd: $(pwd)"
-echo "ls: $(ls)"
-
 if $NPM
 then
-    name=`node -p "require('./package.json').name"`
-    version=`node -p "require('./package.json').version"`
+    if [[ -f "./package.json" ]]
+    then
+        name=`node -p "require('./package.json').name"`
+        version=`node -p "require('./package.json').version"`
 
-    echo "NPM: \`${name} - ${version}\`"
+        echo "NPM: \`${name} - ${version}\`"
+    else
+        echo "NPM not found"
+    fi
 fi
 
-if [ "${TEXT}" ]
+if [[ "${TEXT}" ]]
 then
      echo "Text: ${TEXT}"
 fi
@@ -22,7 +24,7 @@ fi
 echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
 
 echo '```'
-if $CHANGESET && [ $LAST_SUCCESSFUL_COMMIT ]
+if $CHANGESET && [[ $LAST_SUCCESSFUL_COMMIT ]]
 then
     git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
 else
