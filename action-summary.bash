@@ -32,8 +32,8 @@ then
         echo "Big changelog"
         git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
     else
-    echo "Single changelog"
-        git log n -1
+        echo "Single changelog"
+        git log -n 1
     fi
     echo '```'
 fi
