@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
@@ -7,15 +7,13 @@ pwd
 
 if $NPM
 then
-    #name=$(node -p "require('./package.json').name")
-    #version=$(node -p "require('./package.json').version")
-    node -p "require('./package.json').name"
-    node -p "require('./package.json').version"
+    name=`node -p "require('./package.json').name"`
+    version=`node -p "require('./package.json').version"`
 
     echo "NPM: \`${name} - ${version}\`"
 fi
 
-if [ $TEXT ]
+if [ "${TEXT}" ]
 then
      echo "Text: ${TEXT}"
 fi
