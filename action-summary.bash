@@ -39,21 +39,15 @@ fi
 if $TAGBRANCH
 then
     git tag ${GITHUB_REF_NAME}/latest
+    git push origin ${GITHUB_REF_NAME}/latest
 fi
 
 echo "Is \`${GITHUB_REF_NAME}\` master, main or rel?"
-if [[ ${GITHUB_REF_NAME} == "master" ]]
+if [[ ${GITHUB_REF_NAME} == "master" || ${GITHUB_REF_NAME} == "main" || ${GITHUB_REF_NAME} == rel-1.* ]]
 then
-    echo "Yes, master"
-    git tag master/latest
-elif [[ ${GITHUB_REF_NAME} == "main" ]]
-then
-    echo "Yes, main"
-    git tag main/latest
-elif [[ ${GITHUB_REF_NAME} == rel-1.* ]]
-then
-    echo "Yes, rel"
-    git tag rel/latest
+    echo "Yes"
+    git tag ${GITHUB_REF_NAME}/latest
+    git push origin ${GITHUB_REF_NAME}/latest
 else
     echo "No"
 fi
