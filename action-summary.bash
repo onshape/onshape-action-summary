@@ -36,6 +36,10 @@ then
     echo '```'
 fi
 
+if $TAGBRANCH
+then
+    git tag ${GITHUB_REF_NAME}/latest
+
 echo "Is \`${GITHUB_REF_NAME}\` master, main or rel?"
 if [[ ${GITHUB_REF_NAME} == "master" ]]
 then

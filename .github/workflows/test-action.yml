@@ -7,6 +7,9 @@ on:
       changeset:
         default: false
         type: boolean
+      tagbranch:
+        default: false
+        type: boolean
       text:
         default: ""
         type: string
@@ -22,4 +25,5 @@ jobs:
       - uses: onshape/onshape-action-summary@erousseau-build-actions
         env:
             CHANGESET: ${{ github.event.inputs.changeset }}
+            TAGBRANCH: ${{ github.event.inputs.tagbranch }}
             TEXT: ${{ github.event.inputs.text }}
