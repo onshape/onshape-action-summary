@@ -22,6 +22,15 @@ then
      echo $(eval "echo $TEXT")
 fi
 
+echo "Is \`${GITHUB_REF_NAME}\` master, main or rel?"
+if [[ ${GITHUB_REF_NAME} == "master" || ${GITHUB_REF_NAME} == "main" || ${GITHUB_REF_NAME} == rel-1.* ]]
+then
+    echo "Yes"
+    mainbranch="true"
+else
+    echo "No"
+    mainbranch="false"
+
 tagname="${GITHUB_REF_NAME}/latest"
 
 if [[ $CHANGESET == "true" ]]
@@ -39,24 +48,11 @@ then
     echo '```'
 fi
 
-if [[ $TAGBRANCH == "true" ]]
+if [[ $mainbranch == "true" || $TAGBRANCH == "true" ]]
 then
     git tag -d $tagname
     git push --delete origin $tagname
     git tag $tagname
     git push origin --tags
     echo "Tagged ${tagname}"
-fi
-
-echo "Is \`${GITHUB_REF_NAME}\` master, main or rel?"
-if [[ ${GITHUB_REF_NAME} == "master" || ${GITHUB_REF_NAME} == "main" || ${GITHUB_REF_NAME} == rel-1.* ]]
-then
-    echo "Yes"
-    git tag -d $tagname
-    git push --delete origin $tagname
-    git tag $tagname
-    git push origin --tags
-    echo "Tagged ${tagname}"
-else
-    echo "No"
 fi
