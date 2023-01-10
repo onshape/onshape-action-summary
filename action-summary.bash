@@ -2,7 +2,7 @@
 set +x
 
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
-echo "Using branch \`${GITHUB_REF_NAME}\`"
+echo "Used branch \`${GITHUB_REF_NAME}\`"
 
 if [[ $NPM == "true" ]]
 then
@@ -22,13 +22,10 @@ then
      echo $(eval "echo $TEXT")
 fi
 
-echo "Is \`${GITHUB_REF_NAME}\` master, main or rel?"
 if [[ ${GITHUB_REF_NAME} == "master" || ${GITHUB_REF_NAME} == "main" || ${GITHUB_REF_NAME} == rel-1.* ]]
 then
-    echo "Yes"
     mainbranch="true"
 else
-    echo "No"
     mainbranch="false"
 fi
 
