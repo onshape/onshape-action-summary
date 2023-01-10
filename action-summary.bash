@@ -41,7 +41,7 @@ tagname="${GITHUB_REF_NAME}/latest"
 
 if $TAGBRANCH
 then
-    git tag -fa $tagname -m "Latest of ${GITHUB_REF_NAME}"
+    git tag -f $tagname
     git push origin --tags
     echo "Tagged ${tagname}"
 fi
@@ -50,7 +50,7 @@ echo "Is \`${GITHUB_REF_NAME}\` master, main or rel?"
 if [[ ${GITHUB_REF_NAME} == "master" || ${GITHUB_REF_NAME} == "main" || ${GITHUB_REF_NAME} == rel-1.* ]]
 then
     echo "Yes"
-    git tag -fa $tagname -m "Latest of ${GITHUB_REF_NAME}"
+    git tag -f $tagname
     git push origin --tags
     echo "Tagged ${tagname}"
 else
