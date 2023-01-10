@@ -34,12 +34,6 @@ fi
 
 tagname="${GITHUB_REF_NAME}/latest"
 git fetch --all --tags
-echo "git tag:"
-git tag
-echo "git branch:"
-git branch
-echo "tagname:"
-echo $tagname
 
 if [[ $CHANGESET == "true" ]]
 then
