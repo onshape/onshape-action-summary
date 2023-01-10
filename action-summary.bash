@@ -1,4 +1,5 @@
-#!/bin/bash -ex
+#!/bin/bash -e
+set +x
 
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
@@ -36,19 +37,22 @@ then
     echo '```'
 fi
 
+tagname="${GITHUB_REF_NAME}/latest"
+
 if $TAGBRANCH
 then
-    git tag ${GITHUB_REF_NAME}/latest -f
-    git push origin ${GITHUB_REF_NAME}/latest
-    echo "Tagged ${GITHUB_REF_NAME}/latest"
+    git tag -fa $tagname -m "Latest of ${GITHUB_REF_NAME}"
+    git push origin --tags
+    echo "Tagged ${tagname}"
 fi
 
 echo "Is \`${GITHUB_REF_NAME}\` master, main or rel?"
 if [[ ${GITHUB_REF_NAME} == "master" || ${GITHUB_REF_NAME} == "main" || ${GITHUB_REF_NAME} == rel-1.* ]]
 then
     echo "Yes"
-    git tag ${GITHUB_REF_NAME}/latest -f
-    git push origin ${GITHUB_REF_NAME}/latest
+    git tag -fa $tagname -m "Latest of ${GITHUB_REF_NAME}"
+    git push origin --tags
+    echo "Tagged ${tagname}"
 else
     echo "No"
 fi
