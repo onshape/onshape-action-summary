@@ -17,22 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run test
-        id: run-test
         run: |
-          set +x
           echo "Running..."
-          echo "Do fail: ${dofail}"
-          if $dofail
-          then
-            echo "Failing!"
-            exit 1
-          else
-            echo "Passing!"
-            exit 0
-          fi
-          exit 0
-        env:
-          dofail: ${{ inputs.dofail }}
       - uses: onshape/onshape-action-summary@erousseau-build-actions
         env:
             CHANGESET: ${{ github.event.inputs.changeset }}
