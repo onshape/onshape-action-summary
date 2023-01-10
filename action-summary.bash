@@ -37,7 +37,7 @@ then
 fi
 
 echo "Is \`${GITHUB_REF_NAME}\` master or rel?"
-if [[ ${GITHUB_REF_NAME} -eq "master" ]]
+if [[ ${GITHUB_REF_NAME} == "master" ]]
 then
     echo "Yes, master"
 elif [[ ${GITHUB_REF_NAME} == rel-1.* ]]
