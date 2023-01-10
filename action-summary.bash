@@ -22,24 +22,8 @@ then
      echo $(eval "echo $TEXT")
 fi
 
-
-if [[ $CHANGESET == "true" ]]
-then
-    #echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
-    echo "Changeset:"
-    echo '```'
-    if [[ $LAST_SUCCESSFUL_COMMIT ]]
-    then
-        git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
-    else
-        git log -n 1
-    fi
-    echo '```'
-fi
-
 tagname="${GITHUB_REF_NAME}/latest"
 
-echo "Tagbranch: ${TAGBRANCH}"
 if [[ $TAGBRANCH == "true" ]]
 then
     git tag -d $tagname
@@ -60,4 +44,18 @@ then
     echo "Tagged ${tagname}"
 else
     echo "No"
+fi
+
+if [[ $CHANGESET == "true" ]]
+then
+    #echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
+    echo "Changeset:"
+    echo '```'
+    if [[ $LAST_SUCCESSFUL_COMMIT ]]
+    then
+        git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
+    else
+        git log -n 1
+    fi
+    echo '```'
 fi
