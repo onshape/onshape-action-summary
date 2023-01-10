@@ -36,13 +36,19 @@ then
     echo '```'
 fi
 
-echo "Is \`${GITHUB_REF_NAME}\` master or rel?"
+echo "Is \`${GITHUB_REF_NAME}\` master, main or rel?"
 if [[ ${GITHUB_REF_NAME} == "master" ]]
 then
     echo "Yes, master"
+    git tag master/latest
+elif [[ ${GITHUB_REF_NAME} == "main" ]]
+then
+    echo "Yes, main"
+    git tag main/latest
 elif [[ ${GITHUB_REF_NAME} == rel-1.* ]]
 then
     echo "Yes, rel"
+    git tag rel/latest
 else
     echo "No"
 fi
