@@ -38,7 +38,7 @@ if [[ $CHANGESET == "true" ]]
 then
     echo "Changeset:"
     echo '```'
-    echo "Tag check: $(git tag -l ${tagname})"
+    echo "Tag check: $(git tag)"
     if [[ $(git tag -l ${tagname}) ]]
     then
         echo "Big log:"
