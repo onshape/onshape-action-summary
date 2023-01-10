@@ -1,6 +1,5 @@
 name: 'test-action-summary'
 
-
 on:
   workflow_dispatch:
     inputs:
