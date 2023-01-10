@@ -4,18 +4,6 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.10"
     - name: get-summary
       run: |
-        set +x
         bash ${{ github.action_path }}/action-summary.bash >> $GITHUB_STEP_SUMMARY
-        python ${{ github.action_path }}/action-summary.py >> $GITHUB_STEP_SUMMARY
-      shell: bash
-      env:
-        GITHUB_STEP_SUMMARY: $GITHUB_STEP_SUMMARY
-        #NPM: $NPM
-        #CHANGESET: $CHANGESET
-        #TEXT: $TEXT
