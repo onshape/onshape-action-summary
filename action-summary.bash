@@ -24,7 +24,6 @@ fi
 
 echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
 
-
 if $CHANGESET
 then
     echo '```'
