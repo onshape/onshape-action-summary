@@ -24,6 +24,21 @@ fi
 
 tagname="${GITHUB_REF_NAME}/latest"
 
+if [[ $CHANGESET == "true" ]]
+then
+    echo "Changeset:"
+    echo '```'
+    if [[ $(git tag -l ${tagname}) ]]
+    then
+        echo "Big log:"
+        git log --cherry-pick --first-parent --reverse ${tagname}..HEAD
+    else
+        echo "Small log:"
+        git log -n 1
+    fi
+    echo '```'
+fi
+
 if [[ $TAGBRANCH == "true" ]]
 then
     git tag -d $tagname
@@ -44,18 +59,4 @@ then
     echo "Tagged ${tagname}"
 else
     echo "No"
-fi
-
-if [[ $CHANGESET == "true" ]]
-then
-    #echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
-    echo "Changeset:"
-    echo '```'
-    if [[ $LAST_SUCCESSFUL_COMMIT ]]
-    then
-        git log --cherry-pick --first-parent --reverse ${LAST_SUCCESSFUL_COMMIT}..HEAD
-    else
-        git log -n 1
-    fi
-    echo '```'
 fi
