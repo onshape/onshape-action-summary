@@ -33,6 +33,7 @@ else
 fi
 
 tagname="${GITHUB_REF_NAME}/latest"
+git fetch --all --tags
 echo "git tag:"
 git tag
 echo "git branch:"
