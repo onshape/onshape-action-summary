@@ -41,6 +41,7 @@ if [[ ${GITHUB_REF_NAME} -eq "master" ]]
 then
     echo "Yes, master"
 elif [[ ${GITHUB_REF_NAME} == rel-1.* ]]
+then
     echo "Yes, rel"
 else
     echo "No"
