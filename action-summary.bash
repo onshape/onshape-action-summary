@@ -36,10 +36,12 @@ then
     echo '```'
 fi
 
-echo "Is master?"
+echo "Is \`${GITHUB_REF_NAME}\` master or rel?"
 if [[ ${GITHUB_REF_NAME} -eq "master" ]]
 then
-    echo "Yes"
+    echo "Yes, master"
+elif [[ ${GITHUB_REF_NAME} == rel-1.* ]]
+    echo "Yes, rel"
 else
     echo "No"
 fi

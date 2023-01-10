@@ -1,1 +1,1 @@
-print("Test text")
+print("\nPython Test")

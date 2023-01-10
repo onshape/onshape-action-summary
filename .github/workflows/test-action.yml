@@ -1,14 +1,15 @@
 name: 'test-action-summary'
 
 
-
 on:
   workflow_dispatch:
     inputs:
-      dofail:
-        description: Simuate failed "build"
-        type: boolean
+      changeset:
         default: false
+        type: boolean
+      text:
+        default: ""
+        type: string
 
 jobs:
   run-test:
@@ -33,3 +34,6 @@ jobs:
         env:
           dofail: ${{ inputs.dofail }}
       - uses: onshape/onshape-action-summary@erousseau-build-actions
+        env:
+            CHANGESET: ${{ github.event.inputs.changeset }}
+            TEXT: ${{ github.event.inputs.text }}
