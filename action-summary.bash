@@ -33,12 +33,17 @@ else
 fi
 
 tagname="${GITHUB_REF_NAME}/latest"
+echo "git tag:"
+git tag
+echo "git branch:"
+git branch
+echo "tagname:"
+echo $tagname
 
 if [[ $CHANGESET == "true" ]]
 then
     echo "Changeset:"
     echo '```'
-    echo "Tag check: $(git tag)"
     if [[ $(git tag -l ${tagname}) ]]
     then
         echo "Big log:"
