@@ -30,6 +30,7 @@ then
 else
     echo "No"
     mainbranch="false"
+fi
 
 tagname="${GITHUB_REF_NAME}/latest"
 
