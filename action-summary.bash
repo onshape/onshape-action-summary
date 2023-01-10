@@ -51,7 +51,7 @@ fi
 
 if [[ $mainbranch == "true" || $TAGBRANCH == "true" ]]
 then
-    git tag -d $tagname
+    #git tag -d $tagname
     git push --delete origin $tagname
     git tag $tagname
     git push origin --tags
