@@ -4,7 +4,7 @@ set +x
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Using branch \`${GITHUB_REF_NAME}\`"
 
-if $NPM
+if [[ $NPM == "true" ]]
 then
     if [[ -f "./package.json" ]]
     then
@@ -22,10 +22,11 @@ then
      echo $(eval "echo $TEXT")
 fi
 
-echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
 
-if $CHANGESET
+if [[ $CHANGESET == "true" ]]
 then
+    #echo "Last commit: ${LAST_SUCCESSFUL_COMMIT}"
+    echo "Changeset:"
     echo '```'
     if [[ $LAST_SUCCESSFUL_COMMIT ]]
     then
@@ -38,7 +39,8 @@ fi
 
 tagname="${GITHUB_REF_NAME}/latest"
 
-if $TAGBRANCH
+echo "Tagbranch: ${TAGBRANCH}"
+if [[ $TAGBRANCH == "true" ]]
 then
     git tag -d $tagname
     git push --delete origin $tagname
