@@ -40,6 +40,7 @@ if $TAGBRANCH
 then
     git tag ${GITHUB_REF_NAME}/latest
     git push origin ${GITHUB_REF_NAME}/latest
+    echo "Tagged ${GITHUB_REF_NAME}/latest"
 fi
 
 echo "Is \`${GITHUB_REF_NAME}\` master, main or rel?"
