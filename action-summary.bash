@@ -4,6 +4,7 @@ set +x
 echo "## \`${GITHUB_WORKFLOW}\` Finished"
 echo "Used branch \`${GITHUB_REF_NAME}\`"
 
+
 if [[ $NPM == "true" ]]
 then
     if [[ -f "./package.json" ]]
