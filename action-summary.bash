@@ -32,19 +32,20 @@ fi
 tagname="${GITHUB_REF_NAME}/latest"
 git fetch --all --tags
 
-git branch
-
 if [[ $CHANGESET == "true" ]]
 then
-    echo "Changeset:"
-    echo '```'
     if [[ $(git tag -l ${tagname}) ]]
     then
+        echo "Commits since ${tagname}:"
+        echo '```'
         git log --cherry-pick --first-parent --reverse ${tagname}..HEAD --compact-summary
+        echo '```'
     else
+        echo "Most recent commit:"
+        echo '```'
         git log -n 1 --compact-summary
+        echo '```'
     fi
-    echo '```'
 fi
 
 if [[ $mainbranch == "true" || $TAGBRANCH == "true" ]]
@@ -53,5 +54,5 @@ then
     git push --delete origin $tagname
     git tag $tagname
     git push origin --tags
-    echo "Tagged ${tagname}"
+    echo "Updated tag \`${tagname}\`"
 fi
