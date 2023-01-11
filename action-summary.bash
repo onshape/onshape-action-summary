@@ -40,13 +40,9 @@ then
     echo '```'
     if [[ $(git tag -l ${tagname}) ]]
     then
-        echo "Big log:"
-        git log --pretty=format:'%h %aI %ae %s' $*
-        echo "\nPart 2"
-        git log --cherry-pick --first-parent --reverse ${tagname}..HEAD --name-only --oneline --stat
+        git log --cherry-pick --first-parent --reverse ${tagname}..HEAD --compact-summary
     else
-        echo "Small log:"
-        git log -n 1
+        git log -n 1 --compact-summary
     fi
     echo '```'
 fi
