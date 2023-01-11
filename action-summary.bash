@@ -39,6 +39,8 @@ then
     if [[ $(git tag -l ${tagname}) ]]
     then
         echo "Big log:"
+        git log --pretty=format:'%h %aI %ae %s' $*
+        echo "Part 2"
         git log --cherry-pick --first-parent --reverse ${tagname}..HEAD --name-only --oneline --stat
     else
         echo "Small log:"
