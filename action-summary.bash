@@ -32,6 +32,8 @@ fi
 tagname="${GITHUB_REF_NAME}/latest"
 git fetch --all --tags
 
+git branch
+
 if [[ $CHANGESET == "true" ]]
 then
     echo "Changeset:"
@@ -40,7 +42,7 @@ then
     then
         echo "Big log:"
         git log --pretty=format:'%h %aI %ae %s' $*
-        echo "Part 2"
+        echo "\nPart 2"
         git log --cherry-pick --first-parent --reverse ${tagname}..HEAD --name-only --oneline --stat
     else
         echo "Small log:"
