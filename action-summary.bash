@@ -36,7 +36,7 @@ if [[ $CHANGESET == "true" ]]
 then
     if [[ $(git tag -l ${tagname}) ]]
     then
-        echo "Commits since ${tagname}:"
+        echo "Commits since previous \`${tagname}\` (most recent at bottom):"
         echo '```'
         git log --cherry-pick --first-parent --reverse ${tagname}..HEAD --compact-summary
         echo '```'
